@@ -1,10 +1,16 @@
-import "./styles.css";
+import { useState } from "react";
+import { Card } from "./components/Card";
 
-export default function App() {
+export const App = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const onClickSwitch = () => setIsAdmin(!isAdmin);
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div>
+      {isAdmin ? <span>管理者です</span> : <span>管理者以外です</span>}
+      <button onClick={onClickSwitch}>切り替え</button>
+      <Card isAdmin={isAdmin} />
     </div>
   );
-}
+};
